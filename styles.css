@@ -1,0 +1,215 @@
+*, *::after, *::before {
+    font-family: monospace;
+    box-sizing: border-box;
+    user-select: none;
+}
+
+:root {
+    --foreground-color: rgba(0, 0, 0, 0.5);
+    --info-color: rgba(255, 255, 255, 0.5);
+}
+
+body {
+    margin: 0;
+    background: radial-gradient(circle, #249CFF, #2196F3, #1E85D9, #196DB3);
+    background-size: 500% 500%;
+    animation: gradient-background 25s ease infinite alternate;
+    overflow: hidden;
+}
+
+@keyframes gradient-background {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    25% {
+        background-position: 100% 50%;
+    }
+
+    50% {
+        background-position: 0% 50%;
+    }
+
+    75% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+
+.paddle {
+    --position: 50;
+
+    position: absolute;
+    background-color: var(--foreground-color);
+    top: calc(var(--position) * 1vh);
+    transform: translateY(-50%);
+    width: 2.5vh;
+    height: 15vh;
+    border-radius: 5px;
+}
+
+.paddle.left {
+    transition: all 0s linear;
+    left: 1vw;
+}
+
+.paddle.right {
+    transition: all 0s linear;
+    right: 1vw;
+}
+
+.ball {
+    --x: 50;
+    --y: 50;
+
+    position: absolute;
+    background-color: var(--foreground-color);
+    left: calc(var(--x) * 1vw);
+    top: calc(var(--y) * 1vh);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    width: 3vh;
+    height: 3vh;
+}
+
+.score-section {
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 7vh;
+    color: var(--foreground-color);
+}
+
+.score-section>* {
+    flex-grow: 1;
+    flex-basis: 0;
+    padding: 0 2vh;
+    margin: 1vh 0;
+}
+
+.score-section> :first-child {
+    text-align: right;
+    border-right: 1vh solid var(--foreground-color);
+}
+
+#goal-mark {
+    position: absolute;
+    top: 0;
+    width: 100vw;
+    height: fit-content;    
+    display: none;
+    justify-content: left;
+    align-items: center;
+    font-weight: bolder;
+    font-size: 5vw;
+    padding: 25vw;
+    color: var(--info-color);
+    animation: goal-animation 1s ease forwards;
+}
+
+@keyframes goal-animation {
+    0% {
+        font-size: 5vh;
+    }
+
+    50% {
+        transform: rotateZ(5deg);
+        font-size: 10vh;
+    }
+
+    100% {
+        font-size: 5vh;
+        opacity: 0;
+    }
+}
+
+
+.info-section {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    display: none;
+    justify-content: center;
+    align-items: stretch;
+    color: var(--info-color);
+}
+
+#info {
+    font-size: 15vh;
+    font-weight: bolder;
+    height: fit-content;
+}
+
+.options-section {
+    position: absolute;
+    bottom: 1vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    font-weight: bold;
+    font-size: 7vh;
+    width: 100%;
+}
+
+.options-section button {
+    transition: all .2s ease;
+    margin: 0 .5em;
+    background-color: var(--info-color);
+    width: fit-content;
+    height: fit-content;
+    border: 0;
+    border-radius: 10px;
+    padding: .5vh;
+}
+
+.options-section button:hover {
+    transition: all .2s ease;
+    transform: scale(1.1, 1.1);
+}
+
+.options-section button:active {
+    transition: all .2s ease;
+    transform: scale(1, 1);
+}
+
+.options-section button img {
+    transition: all .2s ease;
+    width: 3vh;
+    height: 3vh;
+}
+
+.options-section button img:hover {
+    transform: scale(1.1, 1.1);
+}
+
+#reset-button:active {
+    background-color: var(--foreground-color);
+}
+
+
+@media all and (max-height: 625px) and (min-width: 325px) {
+    .paddle {
+        width: 5vh;
+        height: 20vh;
+    }
+
+    .ball {
+        width: 10vh;
+        height: 10vh;
+    }
+}
+
+@media all and (min-width: 725px) {
+    .paddle {
+        width: 3vh;
+    }
+
+    .ball {
+        width: 5vh;
+        height: 5vh;
+    }
+}

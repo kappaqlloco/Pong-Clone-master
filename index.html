@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="shortcut icon" href="images/icon-pong_1.ico">
+    <title>Pong Clone</title>
+</head>
+<body>
+    <section class="score-section">
+        <section id="player-score">0</section>
+        <section id="computer-score">0</section>
+    </section>
+    <section id="goal-mark">+1</section>
+
+    <div class="ball" id="ball"></div>
+    <div class="paddle left" id="player-paddle"></div>
+    <div class="paddle right" id="computer-paddle"></div>
+
+    <section class="info-section">
+        <section id="info">3</section>
+    </section>
+
+    <section class="options-section">
+        <button onclick="setMute()" id="mute-button" title="Mute (M)">
+            <img id="mute-img" src="images/icon-mute-off.png">
+        </button>
+        <button onclick="document.location.reload(true)" id="reset-button" title="Reset (R/N)">
+            <img id="mute-img" src="images/icon-reset.png">
+        </button>
+        <button onclick="setPause()" id="pause-button" title="Pause/Play (Space)">
+            <img id="pause-img" src="images/icon-pause.png">
+        </button>
+        <button onclick="setBot()" id="bot-button" title="Bot (B)">
+            <img id="bot-img" src="images/icon-bot-on.png">
+        </button>
+    </section>
+
+    <script src="/javascript/audioSystem.js" type="text/javascript"></script>
+    <script src="/javascript/gameManager.js" type="text/javascript"></script>
+    <script src="/javascript/gameEngine.js" type="module"></script>
+</body>
+</html>
